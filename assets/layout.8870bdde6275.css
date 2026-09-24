@@ -1,0 +1,114 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap");
+:root { color-scheme: dark; --orange: #ff9e1b; --muted: #a5a29c; --line: #33312d; }
+* { box-sizing: border-box; }
+body { margin: 0; background: #10100f; color: #faf8f3; font-family: Inter, system-ui, sans-serif; -webkit-font-smoothing: antialiased; }
+a { color: inherit; }
+button, input { font: inherit; }
+button, a, input { -webkit-tap-highlight-color: transparent; }
+:focus-visible { outline: 2px solid var(--orange); outline-offset: 5px; }
+.landing { min-height: 100svh; max-width: 1240px; margin: auto; padding: 0 56px; display: flex; flex-direction: column; }
+.masthead { display: flex; justify-content: space-between; padding: 27px 0; border-bottom: 1px solid var(--line); color: var(--muted); font-size: 12px; font-weight: 500; letter-spacing: .16em; text-transform: uppercase; }
+.landing-content { flex: 1; display: grid; grid-template-columns: 1fr 1fr; align-items: center; gap: 80px; padding: 48px 32px; }
+.brand-art { display: flex; align-items: center; justify-content: center; }
+.oni-mark { display: block; width: min(100%, 300px, 39svh); height: auto; }
+.brand-content { padding: 10px 0; }
+h1 { margin: 0; }
+.wordmark { width: min(100%, 280px); height: auto; display: block; }
+.market-copy { font-size: 16px; line-height: 1.7; margin: 25px 0 0; color: #d0cdc6; }
+.market-copy span { color: var(--muted); }
+.signup-teaser { margin-top: 32px; padding-top: 26px; border-top: 1px solid var(--line); max-width: 340px; }
+.signup-heading { font-size: 16px; line-height: 1.5; margin: 0 0 16px; font-weight: 500; }
+.signup-heading em { color: var(--orange); font-style: normal; }
+.signup-button { display: inline-flex; align-items: center; justify-content: space-between; gap: 32px; min-height: 48px; padding: 14px 20px; background: var(--orange); border: 1px solid var(--orange); border-radius: 3px; color: #16120b; font-size: 14px; font-weight: 700; text-decoration: none; cursor: pointer; transition: background .18s, transform .18s; }
+.signup-button:hover { background: #ffb74f; transform: translateY(-1px); }
+.signup-button span { font-size: 20px; line-height: 1; font-weight: 400; }
+.review-footer { display: flex; justify-content: space-between; align-items: center; border-top: 1px solid var(--line); padding: 14px 0; gap: 20px; }
+.review-link { display: inline-flex; align-items: center; gap: 9px; min-height: 44px; color: var(--muted); font-size: 14px; text-decoration: none; }
+.review-link:hover { color: var(--orange); }
+.modal-dialog { width: min(480px, calc(100% - 32px)); max-height: calc(100dvh - 32px); padding: 40px; border: 1px solid #494239; border-radius: 12px; background: #1c1b18; color: #faf8f3; box-shadow: 0 24px 100px #0008; }
+.modal-dialog::backdrop { background: #000b; backdrop-filter: blur(8px); }
+.modal-dialog[open] { animation: appear .2s ease-out; }
+.modal-close { position: absolute; top: 14px; right: 14px; display: grid; place-items: center; width: 44px; height: 44px; padding: 0; border: 0; border-radius: 50%; background: transparent; color: #b9b4aa; cursor: pointer; }
+.modal-close:hover { background: #ffffff0c; color: white; }
+.eyebrow { margin: 0 0 22px; color: var(--orange); font-size: 12px; font-weight: 700; letter-spacing: .16em; }
+h2 { font-size: clamp(36px, 7vw, 46px); font-weight: 800; letter-spacing: -.045em; line-height: 1.05; margin: 0 0 18px; }
+h2 span { color: var(--orange); }
+#signup-description { font-size: 16px; color: #bab5ab; line-height: 1.6; margin: 0; }
+form { display: grid; gap: 18px; margin-top: 28px; }
+.name-fields { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+label { display: grid; gap: 8px; font-size: 14px; color: #dedad2; }
+input { width: 100%; min-width: 0; height: 48px; padding: 10px 12px; border: 1px solid #514b41; border-radius: 4px; background: #151512; color: white; }
+input:focus { outline: 2px solid var(--orange); outline-offset: 2px; }
+form .signup-button { width: 100%; margin-top: 4px; }
+#signup-status { margin: 0; color: #a9a397; font-size: 12px; line-height: 1.5; text-align: center; }
+body.modal-open { overflow: hidden; }
+@keyframes appear { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+@media (max-width: 700px) {
+ .landing { padding: 0 24px; }
+ .masthead { font-size: 10px; padding: 20px 0; letter-spacing: .12em; }
+ .landing-content { grid-template-columns: 1fr; gap: 20px; padding: 24px 0; text-align: center; align-content: center; }
+ .oni-mark { width: min(136px, 19svh); }
+ .brand-content { padding: 0; }
+ .wordmark { width: 175px; margin: auto; }
+ .market-copy { font-size: 14px; line-height: 1.5; margin-top: 18px; }
+ .signup-teaser { margin: 20px auto 0; padding-top: 18px; max-width: 300px; }
+ .signup-heading { font-size: 15px; margin-bottom: 12px; }
+ .signup-button { min-height: 46px; padding: 12px 18px; }
+ .review-footer { padding: 7px 0; }
+ .review-link { font-size: 12px; }
+ .modal-dialog { padding: 32px 24px 24px; }
+}
+@media (max-height: 700px) and (max-width: 700px) {
+ .landing-content { gap: 14px; padding: 16px 0; }
+ .oni-mark { width: 98px; }
+ .wordmark { width: 150px; }
+ .market-copy { margin-top: 14px; }
+ .signup-teaser { margin-top: 14px; padding-top: 14px; }
+}
+@media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation: none !important; transition: none !important; } }
+
+/* Keep the illustrated mark and wordmark together as one logo. */
+.logo-lockup { display: flex; flex-direction: column; align-items: center; gap: 18px; margin: 0; }
+.logo-lockup .oni-mark { width: min(190px, 28svh); }
+.logo-lockup .wordmark { width: min(200px, 30svh); margin: 0; }
+.brand-content .market-copy { margin-top: 0; }
+.schedule { margin-top: 30px; }
+.schedule h2 { font-size: 26px; letter-spacing: -.035em; line-height: 1.2; margin: 0 0 20px; }
+.event-row { display: flex; align-items: center; gap: 20px; padding: 18px 0; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+.event-date { flex: 0 0 44px; display: grid; gap: 3px; text-align: center; }
+.event-date span { font-size: 11px; letter-spacing: .12em; color: var(--muted); }
+.event-date strong { font-size: 28px; font-weight: 600; line-height: 1.1; }
+.event-status { font-size: 12px; color: var(--orange); }
+.event-details p { margin: 6px 0 0; font-size: 14px; line-height: 1.5; color: #d0cdc6; }
+.schedule + .signup-teaser { border-top: 0; padding-top: 0; margin-top: 26px; }
+@media (max-width: 700px) {
+ .landing-content { gap: 26px; }
+ .logo-lockup { gap: 12px; }
+ .logo-lockup .oni-mark { width: 104px; }
+ .logo-lockup .wordmark { width: 130px; }
+ .brand-content { width: 100%; max-width: 380px; margin: auto; }
+ .schedule { margin-top: 24px; text-align: left; }
+ .schedule h2 { font-size: 24px; margin-bottom: 16px; }
+ .event-row { padding: 14px 0; }
+ .schedule + .signup-teaser { margin-top: 22px; }
+}
+
+.event-details { flex: 1; }
+.event-details .event-location { color: #faf8f3; font-size: 17px; font-weight: 600; }
+.event-details .event-location + p { margin-top: 2px; }
+.map-link { display: inline-flex; align-items: center; gap: 8px; min-height: 44px; color: var(--orange); font-size: 14px; text-decoration: none; }
+.map-link:hover { text-decoration: underline; text-underline-offset: 4px; }
+
+.signup-button { border-radius: 999px; }
+.event-row + .event-row { border-top: 0; }
+@media (max-width: 700px) and (max-height: 740px) {
+ .masthead { padding: 14px 0; }
+ .landing-content { gap: 16px; padding: 12px 0; }
+ .logo-lockup { gap: 8px; }
+ .logo-lockup .oni-mark { width: 76px; }
+ .logo-lockup .wordmark { width: 104px; }
+ .schedule { margin-top: 16px; }
+ .schedule h2 { margin-bottom: 12px; }
+ .event-row { padding: 10px 0; }
+ .schedule + .signup-teaser { margin-top: 16px; }
+}
