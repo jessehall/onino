@@ -20,7 +20,9 @@
 .signup-teaser { display: flex; flex-direction: column; align-items: center; gap: 14px; margin-top: 8px; }
 .signup-heading { margin: 0; font-size: 1.125rem; line-height: 1.4; font-weight: 600; }
 .signup-button { margin: 0; padding: 10px 18px; min-height: 44px; font-size: 0.9375rem; line-height: 1.4; }
-.review-footer { padding-top: 24px; text-align: center; }
+.review-footer { display: flex; flex-wrap: wrap; justify-content: center; gap: 0 24px; padding-top: 24px; text-align: center; }
+.instagram-link { gap: 7px; }
+.instagram-link svg { flex-shrink: 0; }
 .review-link { display: inline-flex; align-items: center; min-height: 44px; font-size: 0.875rem; color: var(--light); text-decoration: underline; text-underline-offset: 4px; }
 .review-link:hover { color: var(--brand-1); }
 @media (max-height: 600px) {
