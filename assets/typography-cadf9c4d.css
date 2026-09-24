@@ -1,0 +1,186 @@
+/*
+  ----------------------------------------
+  Typography
+  ----------------------------------------
+*/
+
+@layer styles {
+  /* General */
+  body,
+  p {
+    font-family: var(--font-body);
+    font-size: var(--text-base);
+    line-height: 1.2;
+    overflow-wrap: break-word;
+  }
+
+  p {
+    margin-top: var(--space-sm);
+    max-width: var(--max-w-text);
+  }
+
+  h1 {
+    font-family: var(--font-heading);
+    font-size: var(--text-3xl);
+    margin-top: var(--space-xl);
+    max-width: var(--max-w-text);
+    font-weight: 800;
+    line-height: 0.8;
+  }
+
+  h2 {
+    font-family: var(--font-heading);
+    font-size: var(--text-2xl);
+    margin-top: var(--space-lg);
+    max-width: var(--max-w-text);
+    font-weight: 700;
+    line-height: 1.2;
+  }
+
+  h3 {
+    font-family: var(--font-heading);
+    font-size: var(--text-xl);
+    margin-top: var(--space-md);
+    max-width: var(--max-w-text);
+    font-weight: 700;
+    line-height: 0.8;
+  }
+
+  h4 {
+    font-family: var(--font-heading);
+    font-size: var(--text-lg);
+    margin-top: var(--space-sm);
+    max-width: var(--max-w-text);
+    font-weight: 700;
+    line-height: 0.8;
+  }
+
+  a {
+    color: var(--link);
+    text-decoration: underline;
+  }
+
+  blockquote {
+    margin-top: var(--space-md);
+    padding-left: var(--space-sm);
+    border-left: 6px solid var(--brand-1);
+  }
+
+  mark {
+    background-color: var(--highlight);
+  }
+
+  :not(pre) > code {
+    font-size: 90%;
+    padding-top: 0.125rem;
+    padding-bottom: 0.125rem;
+    padding-left: 0.25rem;
+    padding-right: 0.25rem;
+    background-color: var(--lighter);
+    border-radius: var(--rounded);
+    color: var(--dark);
+    white-space: nowrap;
+  }
+
+  /* Lists - styled by default, use .list-none class to reset */
+  ul:not(.list-none),
+  ol:not(.list-none) {
+    display: flex;
+    flex-direction: column;
+    justify-content: items-around;
+    gap: var(--space-sm);
+    padding: var(--space-md);
+    max-width: var(--max-w-text);
+    list-style: none;
+  }
+
+  ul:not(.list-none) {
+    li {
+      position: relative;
+      font-size: var(--text-base);
+      line-height: 1.2;
+      padding-left: 1.2em;
+      max-width: var(--max-w-text);
+    }
+
+    li::before {
+      position: absolute;
+      top: -0.15em;
+      color: var(--brand-1);
+      left: calc(var(--space-2xs) * -1);
+      font-size: 140%;
+      content: "✦";
+    }
+  }
+
+  ol:not(.list-none) {
+    li {
+      position: relative;
+      font-size: var(--text-base);
+      line-height: 1.3;
+      padding-left: 1.3rem;
+      counter-increment: step-counter;
+    }
+
+    li::before {
+      display: flex;
+      position: absolute;
+      top: 0;
+      left: -0.4rem;
+      font-weight: 600;
+      line-height: 0.8;
+      width: 1.3rem;
+      height: 1.3rem;
+      border-radius: 9999px;
+      background-color: var(--brand-1);
+      align-items: center;
+      justify-content: center;
+      font-size: 70%;
+      color: var(--white);
+      content: counter(step-counter);
+    }
+  }
+
+  /* Tables - styled by default, wrap in a <div> for rounded corners */
+  table {
+    min-width: 100%;
+    font-size: var(--text-sm);
+    white-space: nowrap;
+    background-color: var(--white);
+
+    thead {
+      border-bottom: 1px solid var(--lighter);
+    }
+
+    th {
+      font-size: var(--text-base);
+      background-color: var(--lighter);
+      padding: var(--space-2xs);
+      font-weight: 600;
+      color: var(--darker);
+      text-align: left;
+    }
+
+    tr {
+      border-bottom: 1px solid var(--lighter);
+
+      &:last-child {
+        border: none;
+      }
+
+      td {
+        padding: var(--space-2xs);
+      }
+    }
+  }
+
+  /* Table wrapper for rounded corners */
+  div:has(> table) {
+    display: block;
+    min-width: 100%;
+    overflow-x: auto;
+    border-radius: var(--rounded);
+    border: 1px solid var(--light);
+    min-height: 0;
+  }
+}

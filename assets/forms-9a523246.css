@@ -1,0 +1,428 @@
+/*
+  ----------------------------------------
+  Forms (for forms using ui_field helpers)
+  ----------------------------------------
+*/
+
+:root {
+  --ui-field-padding: 0.8rem;
+  --ui-field-height: 3rem;
+  --ui-field-font-size: 1.1rem;
+  --ui-field-border: 1px solid var(--light);
+  --ui-field-border-radius: var(--rounded-sm);
+  --ui-field-focus-outline: 1px solid;
+  --ui-field-focus-color: var(--brand-1);
+  --ui-field-bg: var(--black);
+  --ui-field-bg-disabled: var(--lighter);
+  --ui-field-placeholder-color: var(--lighter);
+  --ui-field-value-color: var(--white);
+  --ui-field-label-color: var(--lighter);
+  --ui-field-value-color-disabled: var(--light);
+  --ui-field-icon-width: 1.4rem;
+}
+
+@layer styles {
+  form:has(.ui-field) {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-md);
+    max-width: var(--max-w-form);
+
+    /* Wrap multiple fields in a div.form-row for responsive layout  */
+    .form-row {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      gap: var(--space-2xs);
+    }
+
+    /* Wrap a form control and its label, notes, and error in a .ui-field */
+    .ui-field {
+      display: flex;
+      position: relative;
+      flex-direction: column;
+      gap: var(--space-2xs);
+      flex: 1;
+      min-width: 16rem;
+
+      /* Text inputs and selects */
+      input:not([type="checkbox"], [type="radio"], [type="submit"]),
+      textarea,
+      select {
+        width: 100%;
+        height: var(--ui-field-height);
+        font-size: var(--ui-field-font-size);
+        padding: 0 var(--ui-field-padding);
+        border: var(--ui-field-border);
+        border-radius: var(--ui-field-border-radius);
+        background: var(--ui-field-bg);
+        color: var(--ui-field-value-color);
+        transition: all 0.2s ease-in-out;
+
+        /* Large option */
+        &.ui-large {
+          height: calc(var(--ui-field-height) + 1.2rem);
+          font-size: calc(var(--ui-field-font-size) + 0.1rem);
+          padding: 0 calc(var(--ui-field-padding) + 2.2rem);
+
+          ~ svg {
+            width: 1.6rem;
+          }
+
+          ~ label {
+            font-size: calc(var(--ui-field-font-size) + 0.2rem);
+            left: calc(var(--ui-field-padding) + 2.2rem);
+          }
+
+          &:focus ~ label,
+          &:not(:placeholder-shown) ~ label,
+          &:-webkit-autofill ~ label {
+            left: 0.8rem;
+            font-size: 0.9rem;
+          }
+        }
+
+        &:focus {
+          outline: var(--ui-field-focus-outline) var(--ui-field-focus-color);
+          border-color: var(--ui-field-focus-color);
+          outline-offset: 0;
+        }
+
+        &::placeholder {
+          color: var(--ui-field-placeholder-color);
+        }
+
+        &:disabled {
+          background: var(--ui-field-bg-disabled);
+          color: var(--ui-field-value-color-disabled);
+          cursor: not-allowed;
+        }
+
+        &:-webkit-autofill {
+          /* Includes a hack to override Chrome's aggressive autofill styling */
+          -webkit-text-fill-color: var(--ui-field-value-color) !important;
+          box-shadow: 0 0 0 1000px var(--ui-field-bg) inset !important;
+        }
+      }
+
+      /* Select dropdown arrow spacing */
+      select {
+        padding-right: calc(var(--ui-field-padding) + 0.5rem);
+        appearance: none;
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23888' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
+        background-repeat: no-repeat;
+        background-position: right var(--ui-field-padding) center;
+        background-size: 1rem;
+      }
+
+      textarea {
+        height: auto;
+        min-height: 5rem;
+        padding-top: 0.625rem;
+        padding-bottom: 0.625rem;
+      }
+
+      /* Checkboxes - modern custom styling */
+      input[type="checkbox"] {
+        appearance: none;
+        width: 1.125rem;
+        height: 1.125rem;
+        border: var(--ui-field-border);
+        border-radius: var(--ui-field-border-radius);
+        background-color: var(--white);
+        cursor: pointer;
+        transition: all 120ms ease-in-out;
+        flex-shrink: 0;
+        position: relative;
+
+        &:hover {
+          border-color: var(--brand-1);
+        }
+
+        &:focus {
+          outline: none;
+        }
+
+        &:checked {
+          background-color: var(--brand-1);
+          border-color: var(--brand-1);
+
+          /* Checkmark using CSS */
+          &::after {
+            content: "";
+            position: absolute;
+            left: 0.3rem;
+            top: 0.07rem;
+            width: 0.375rem;
+            height: 0.625rem;
+            border: solid white;
+            border-width: 0 2px 2px 0;
+            transform: rotate(45deg);
+          }
+        }
+
+        &:disabled {
+          background-color: var(--lighter);
+          border-color: var(--light);
+          cursor: not-allowed;
+
+          &:checked {
+            background-color: var(--midtone);
+          }
+        }
+      }
+
+      /* Radio buttons - modern custom styling */
+      input[type="radio"] {
+        appearance: none;
+        width: 1.125rem;
+        height: 1.125rem;
+        border: var(--ui-field-border);
+        border-radius: 50%;
+        background-color: var(--white);
+        cursor: pointer;
+        transition: all 120ms ease-in-out;
+        flex-shrink: 0;
+        position: relative;
+
+        &:hover {
+          border-color: var(--brand-1);
+        }
+
+        &:focus {
+          outline: none;
+        }
+
+        &:checked {
+          border-color: var(--brand-1);
+          border-width: 2px;
+
+          /* Large inner dot with white ring */
+          &::after {
+            content: "";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 0.625rem;
+            height: 0.625rem;
+            border-radius: 50%;
+            background-color: var(--brand-1);
+          }
+        }
+
+        &:disabled {
+          background-color: var(--lighter);
+          border-color: var(--light);
+          cursor: not-allowed;
+
+          &:checked {
+            border-color: var(--midtone);
+
+            &::after {
+              background-color: var(--midtone);
+            }
+          }
+        }
+      }
+
+      /* File drop zone */
+      .file-drop-zone {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: var(--space-xs);
+        width: 100%;
+        min-height: 8rem;
+        padding: var(--space-md);
+        border: var(--ui-field-border);
+        border-style: dashed;
+        border-radius: var(--ui-field-border-radius);
+        background: var(--ui-field-bg);
+        color: var(--ui-field-value-color);
+        cursor: pointer;
+        transition: all 120ms;
+
+        &:hover {
+          border-color: var(--ui-field-focus-color);
+          background: color-mix(
+            in srgb,
+            var(--ui-field-bg) 97%,
+            var(--ui-field-focus-color)
+          );
+        }
+
+        &.dragging {
+          border-color: var(--ui-field-focus-color);
+          background: color-mix(
+            in srgb,
+            var(--ui-field-bg) 95%,
+            var(--ui-field-focus-color)
+          );
+        }
+
+        .upload-icon {
+          color: var(--midtone);
+          width: 2.5rem;
+          height: 2.5rem;
+        }
+
+        .file-drop-text {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          gap: var(--space-2xs);
+          text-align: center;
+        }
+
+        .file-drop-prompt {
+          font-size: var(--ui-field-font-size);
+          color: var(--ui-field-value-color);
+
+          strong {
+            color: var(--ui-field-focus-color);
+          }
+        }
+
+        .file-name {
+          font-size: var(--ui-field-font-size);
+          color: var(--ui-field-value-color);
+          font-weight: 500;
+        }
+      }
+
+      /* Floating labels */
+      .floating-label ~ label {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-55%);
+        left: var(--ui-field-padding);
+        font-size: var(--ui-field-font-size);
+        color: var(--midtone);
+        border-radius: var(--rounded);
+        transition: 120ms;
+        pointer-events: none;
+        z-index: 1;
+        line-height: 1.4;
+      }
+      textarea.floating-label ~ label {
+        top: 1.2rem;
+        transform: translateY(-50%);
+      }
+
+      .floating-label:focus ~ label,
+      .floating-label:not(:placeholder-shown) ~ label,
+      .floating-label:-webkit-autofill ~ label {
+        top: 0;
+        left: 0.4rem;
+        font-size: calc(var(--ui-field-font-size) * 0.9);
+        background-color: var(--ui-field-bg);
+        padding: 0 0.3rem;
+      }
+
+      /* Icons */
+      .icon,
+      .trailing-icon {
+        position: absolute;
+        color: var(--ui-field-label-color);
+        top: 50%;
+        transform: translate(0, -50%);
+        z-index: 5;
+        width: var(--ui-field-icon-width);
+        height: auto;
+      }
+
+      .icon {
+        left: var(--ui-field-padding);
+      }
+
+      /* For inputs with icons, */
+      &:has(.icon) input {
+        padding-left: calc(
+          2 * var(--ui-field-padding) + var(--ui-field-icon-width) - 0.2rem
+        );
+      }
+      &:has(.icon) label {
+        left: calc(
+          2 * var(--ui-field-padding) + var(--ui-field-icon-width) - 0.2rem
+        );
+      }
+
+      /* Trailing icon (right side) */
+      .trailing-icon {
+        right: var(--ui-field-padding);
+      }
+
+      &:has(.trailing-icon) input {
+        padding-right: calc(
+          0.625rem + 1rem + 0.5rem
+        ); /* icon right + icon width + gap */
+      }
+
+      /* Note and error messages*/
+      span.note {
+        font-size: 0.75rem;
+        color: var(--midtone);
+        margin-top: -3px;
+        margin-bottom: -12px;
+      }
+
+      span.error {
+        font-size: 0.75rem;
+        color: var(--error);
+        margin-top: -3px;
+        margin-bottom: -12px;
+      }
+
+      /* Error state styling */
+      &:has(span.error) {
+        input:not([type="checkbox"], [type="radio"], [type="submit"]),
+        textarea,
+        select {
+          border-color: var(--error);
+          color: var(--error);
+
+          &:focus {
+            outline-color: var(--error);
+            border-color: var(--error);
+          }
+        }
+        label {
+          color: var(--error);
+        }
+      }
+
+      /* Labels for an individual checkbox or radio button */
+      label:has(input[type="checkbox"], input[type="radio"]) {
+        display: flex;
+        font-size: var(--text-sm);
+        align-items: center;
+        gap: var(--space-2xs);
+        font-weight: 400;
+      }
+
+      /* Fieldset and legend for checkbox/radio groups */
+      fieldset {
+        display: flex;
+        flex-direction: column;
+        gap: var(--space-xs);
+        min-width: 4rem;
+
+        legend {
+          padding-bottom: var(--space-sm);
+          font-size: var(--text-base);
+        }
+      }
+    }
+  }
+
+  .form-footer {
+    padding: var(--space-sm) 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: var(--space-sm);
+  }
+}

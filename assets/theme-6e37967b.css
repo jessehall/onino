@@ -1,0 +1,108 @@
+/*
+  ----------------------------------------
+  Theme - Utility classes
+  ----------------------------------------
+*/
+
+/* Fonts */
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap");
+
+:root {
+  /* Fonts */
+  --font-body: "Inter", system-ui, sans-serif;
+  --font-heading: "Inter", system-ui, sans-serif;
+  --font-normal: 400;
+  --font-semibold: 600;
+  --font-bold: 700;
+
+  /* Brand Colors */
+  --brand-1: #ff9e1b; /* Orange */
+  --brand-1-light: oklch(95.1% 0.026 236.824); /* Sky 100 */
+  --brand-2: oklch(75% 0.183 55.934);
+  --brand-2-light: oklch(90.1% 0.058 230.902); /* Sky 200 */
+  --brand-3: oklch(51.1% 0.096 186.391); /* Teal 700 */
+  --brand-3-light: oklch(91% 0.096 180.426); /* Teal 200 */
+  --brand-4: oklch(51.8% 0.253 323.949); /* Fuschia 700 */
+  --brand-4-light: oklch(90.3% 0.076 319.62); /* Fuschia 200 */
+
+  /* Neutral Colors */
+  --black: oklch(14.1% 0.005 285.823);
+  --darker: oklch(27.4% 0.006 286.033); /* Zinc 800 */
+  --dark: oklch(37% 0.013 285.805); /* Zinc 700 */
+  --midtone: oklch(55.2% 0.016 285.938); /* Zinc 500 */
+  --light: oklch(87.1% 0.006 286.286); /* Zinc 300 */
+  --lighter: oklch(96.7% 0.001 286.375); /* Zinc 100 */
+  --white: white;
+
+  /* Semantic Colors */
+  --success: oklch(62.7% 0.194 149.214); /* Green 600 */
+  --success-light: oklch(96.2% 0.044 156.743); /* Green 100 */
+  --info: oklch(54.6% 0.245 262.881); /* Blue 600 */
+  --info-light: oklch(93.2% 0.032 255.585); /* Blue 100 */
+  --warning: oklch(64.6% 0.222 41.116); /* Orange 600 */
+  --warning-light: oklch(95.4% 0.038 75.164); /* Orange 100 */
+  --error: oklch(50.5% 0.213 27.518); /* Red 700 */
+  --error-light: oklch(93.6% 0.032 17.717); /* Red 100 */
+  --link: oklch(54.6% 0.245 262.881); /* Blue 600 */
+  --highlight: oklch(94.5% 0.129 101.54); /* Yellow 200 */
+
+  /* Border & Outline Widths */
+  --border: 1px;
+  --border-sm: 0.5px;
+  --border-lg: 2px;
+
+  /* Border Radius */
+  --rounded: 0.25rem;
+  --rounded-sm: 0.125rem;
+  --rounded-lg: 0.5rem;
+
+  /* Shadow */
+  --shadow: 0 4px 4px 1px rgb(0 0 0 / 0.15), 0 2px 4px -2px rgb(0 0 0 / 0.25);
+  --shadow-sm:
+    0 2px 3px -0.5px rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+  --shadow-lg:
+    0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+
+  /* Width Constraints */
+  --max-w-text: 80ch;
+  --max-w-form: 40rem;
+
+  /* Container */
+  --container-max: 1200px;
+  --container-padding: 0 var(--space-lg);
+
+  /* Fluid Text Scale – Generated with: `npx prewindcss text`
+     Min viewport: 320px
+     Max viewport: 1600px
+     Min base size: 14px
+     Max base size: 18px
+     Min ratio: 1.25 - Major Third
+     Max ratio: 1.414 - Augmented Fourth
+  */
+  --text-sm: clamp(0.7rem, 0.6761rem + 0.1195vw, 0.7956rem);
+  --text-base: clamp(0.875rem, 0.8125rem + 0.3125vw, 1.125rem);
+  --text-lg: clamp(1.094rem, 0.9695rem + 0.6212vw, 1.591rem);
+  --text-xl: clamp(1.367rem, 1.147rem + 1.103vw, 2.249rem);
+  --text-2xl: clamp(1.709rem, 1.341rem + 1.839vw, 3.181rem);
+  --text-3xl: clamp(2.136rem, 1.546rem + 2.951vw, 4.497rem);
+  --text-4xl: clamp(2.67rem, 1.748rem + 4.611vw, 6.359rem);
+
+  /* Fluid Space Scale – Generated with: `npx prewindcss space`
+     Min viewport: 320px
+     Max viewport: 1600px
+     Min sm size: 12px
+     Max sm size: 18px
+     Min ratio: 1.5 - Perfect Fifth
+     Max ratio: 1.667 - Major Sixth
+  */
+  --space-3xs: clamp(0.2222rem, 0.2171rem + 0.02579vw, 0.2429rem);
+  --space-2xs: clamp(0.3333rem, 0.3155rem + 0.08938vw, 0.4048rem);
+  --space-xs: clamp(0.5rem, 0.4563rem + 0.2186vw, 0.6749rem);
+  --space-sm: clamp(0.75rem, 0.6563rem + 0.4688vw, 1.125rem);
+  --space-md: clamp(1.125rem, 0.9374rem + 0.938vw, 1.875rem);
+  --space-lg: clamp(1.688rem, 1.328rem + 1.798vw, 3.126rem);
+  --space-xl: clamp(2.531rem, 1.861rem + 3.35vw, 5.211rem);
+  --space-2xl: clamp(3.797rem, 2.574rem + 6.113vw, 8.688rem);
+  --space-3xl: clamp(5.695rem, 3.499rem + 10.98vw, 14.48rem);
+  --space-4xl: clamp(8.543rem, 4.643rem + 19.5vw, 24.14rem);
+}

@@ -1,0 +1,138 @@
+/*
+  ----------------------------------------
+  Transitions
+  ----------------------------------------
+*/
+
+@layer styles {
+    /* Crossfade main content (different IDs prevent cross-layout transitions) */
+    #user-main {
+        view-transition-name: user-main;
+    }
+    #admin-main {
+        view-transition-name: admin-main;
+    }
+    ::view-transition-old(user-main),
+    ::view-transition-new(user-main),
+    ::view-transition-old(admin-main),
+    ::view-transition-new(admin-main) {
+        animation-duration: 300ms;
+        animation-timing-function: ease-in-out;
+    }
+
+    /* Active nav underline animation */
+    .nav-link.active::after {
+        view-transition-name: active-nav;
+    }
+    ::view-transition-group(active-nav) {
+        /* Sweet easing function (source: https://easingwizard.com) */
+        animation-timing-function: linear(
+            0,
+            0.383 7.5%,
+            0.68 15.5%,
+            0.891 24%,
+            0.969 28.6%,
+            1.027 33.4%,
+            1.061 37.4%,
+            1.084 41.7%,
+            1.097 46.2%,
+            1.1 51.2%,
+            1.085 59.9%,
+            1.014 84.2%,
+            1
+        );
+        animation-duration: 320ms;
+    }
+    ::view-transition-old(active-nav),
+    ::view-transition-new(active-nav) {
+        height: 100%;
+    }
+
+    /* Fade in */
+    .fade-in {
+        animation: fade-in ease 400ms;
+    }
+    @keyframes fade-in {
+        from {
+            opacity: 0;
+        }
+        to {
+            opacity: 1;
+        }
+    }
+
+    /* Fade out */
+    .fade-out {
+        animation: fade-out ease 300ms forwards;
+    }
+    @keyframes fade-out {
+        from {
+            opacity: 1;
+        }
+        to {
+            opacity: 0;
+        }
+    }
+
+    /* Ephemeral (fade in quickly, then fade out after n seconds) */
+    @keyframes ephemeral {
+        0%,
+        100% {
+            opacity: 0;
+        }
+        5%,
+        70% {
+            opacity: 1;
+        }
+    }
+
+    /* Grow out */
+    .grow-out {
+        animation: grow-out ease-in-out 200ms;
+    }
+    @keyframes grow-out {
+        from {
+            transform: scaleX(0);
+            transform-origin: center;
+        }
+        to {
+            transform: scaleX(1);
+            transform-origin: center;
+        }
+    }
+
+    /* Fly in */
+    .fly-in {
+        animation: fly-in ease-out 400ms;
+    }
+    @keyframes fly-in {
+        from {
+            opacity: 0;
+            transform: translateY(-3%);
+            transform-origin: center;
+        }
+
+        to {
+            opacity: 1;
+            transform: translateY(0);
+            transform-origin: center;
+        }
+    }
+
+    /* Fly out */
+    .fly-out {
+        animation: fly-out ease-in 250ms forwards;
+    }
+    @keyframes fly-out {
+        from {
+            opacity: 1;
+            transform: translateY(0);
+            transform-origin: center;
+        }
+        to {
+            opacity: 0;
+            transform: translateY(-3%);
+            transform-origin: center;
+        }
+    }
+}

@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <!-- Head -->
+  <head>
+  <meta charset="utf-8">
+  <meta name="robots" content="noindex, nofollow">
+  <title>ONINO PIZZA</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="view-transition" content="same-origin">
+
+  
+
+  
+
+
+  <!-- Favicons (from https://realfavicongenerator.net) -->
+  <!--<link rel="icon" type="image/png" href="/favicons/favicon-96x96.png" sizes="96x96">
+  <link rel="icon" type="image/svg+xml" href="/favicons/favicon.svg">
+  <link rel="shortcut icon" href="/favicons/favicon.ico">
+  <link rel="apple-touch-icon" sizes="180x180" href="/favicons/apple-touch-icon.png">
+  <meta name="apple-mobile-web-app-title" content="Preflight">
+  <link rel="manifest" href="/favicons/site.webmanifest">-->
+
+  <link rel="stylesheet" href="assets/_layers-9ae6e785.css" />
+<link rel="stylesheet" href="assets/admin-21e37a9e.css" />
+<link rel="stylesheet" href="assets/application-99345ee3.css" />
+<link rel="stylesheet" href="assets/forms-9a523246.css" />
+<link rel="stylesheet" href="assets/theme-6e37967b.css" />
+<link rel="stylesheet" href="assets/transitions-86c32921.css" />
+<link rel="stylesheet" href="assets/typography-cadf9c4d.css" />
+<link rel="stylesheet" href="assets/ui-ac4d8636.css" />
+  <script src="assets/staging.js" defer></script>
+<style>.modal-dialog { max-height: 90dvh; overflow-y: auto; } body.modal-open { overflow: hidden; }</style>
+</head>
+
+
+  <!-- Body -->
+  <body class="min-h-screen flex flex-col bg-black text-white">
+
+    <!-- Main -->
+    <main id="user-main" class="flex-1 overflow-x-hidden flex flex-col">
+      <div data-controller="free-pizza-modal"
+     data-free-pizza-modal-open-value="false"
+     data-action="keydown@window->free-pizza-modal#handleKeydown">
+
+  <section class="container flex-1 flex flex-col gap-md items-center justify-center p-sm">
+
+    <img alt="ONI" class="mt-lg" style="width: 18rem; max-width:50%" src="assets/oni-face-orange-bdc27386.svg" />
+    <img alt="ONI" class="mt-md" style="width: 18rem; max-width:50%" src="assets/onino-stacked-logo-white-7a9f3887.svg" />
+    <p class="text-lg italic text-center mt-md text-light">Coming to Fairfax &amp; Novato Farmer's Markets Summer&nbsp;2026</p>
+
+    <!-- Free pizza signup teaser -->
+    <div class="flex flex-col items-center gap-sm mt-xs text-center">
+      <p class="font-bold text-xl">Want to try a <em>free</em> pizza on us?</p>
+      <a class="ui-button ui-brand-1 my-sm" data-turbo-frame="signup-modal-frame" data-action="free-pizza-modal#open" href="#free-pizza">Oh HECK, yeah!</a>
+    </div>
+
+  </section>
+
+  <!-- Signup modal -->
+  <div class="modal-overlay hidden"
+       data-free-pizza-modal-target="overlay">
+    <div role="dialog" aria-modal="true" aria-labelledby="signup-title" class="modal-dialog" data-free-pizza-modal-target="dialog">
+
+      <!-- Close button -->
+      <button class="modal-close" aria-label="Close" data-action="free-pizza-modal#close">
+        <svg aria-hidden="true" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"></path><path d="m6 6 12 12"></path></svg>
+      </button>
+
+      <!-- Header + form inside turbo-frame so both are replaced on confirmation -->
+      <turbo-frame id="signup-modal-frame">
+        <h2 id="signup-title" class="mt-0">
+  Free pizza.<br>
+  Yes, really.
+</h2>
+<p class="text-light mb-md">
+  Join the list and we'll invite you to order a free take out pizza for pick up in Deer Park neighborhood.
+</p>
+<form id="signup-form" accept-charset="UTF-8" method="post">
+  <div class="ui-field"><div class="relative"><input class="floating-label" placeholder=" " type="text" name="user[first_name]" id="user_first_name" /><label for="user_first_name">First name</label></div></div>
+  <div class="ui-field"><div class="relative"><input class="floating-label" placeholder=" " type="text" name="user[last_name]" id="user_last_name" /><label for="user_last_name">Last name</label></div></div>
+  <div class="ui-field"><div class="relative"><input class="floating-label" placeholder=" " type="email" name="user[email_address]" id="user_email_address" /><label for="user_email_address">Email address</label><svg aria-hidden="true" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon"><path d="m22 7-8.991 5.727a2 2 0 0 1-2.009 0L2 7"></path><rect x="2" y="4" width="20" height="16" rx="2"></rect></svg></div></div>
+  <p id="signup-status" role="status" class="text-light mb-md">Staging preview. This form does not send or save your details.</p>
+  <input type="submit" name="commit" value="Sign me up!" class="ui-button ui-brand-1 w-full" data-disable-with="Sign me up!" />
+</form>
+      </turbo-frame>
+
+    </div>
+  </div>
+
+</div>
+
+    </main>
+
+  </body>
+</html>
