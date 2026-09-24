@@ -1,0 +1,33 @@
+/* Compact, viewport-aware landing page. */
+.landing {
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+  padding: clamp(20px, 4svh, 40px) 24px 16px;
+}
+.landing-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  gap: clamp(16px, 2.5svh, 24px);
+}
+.oni-mark { width: clamp(112px, 22svh, 180px); height: auto; margin: 0; }
+.wordmark { width: clamp(140px, 24svh, 200px); height: auto; margin: 0; }
+.market-copy { max-width: 32rem; margin: 4px 0 0; font-size: 1rem; line-height: 1.5; font-style: italic; color: var(--light); }
+.signup-teaser { display: flex; flex-direction: column; align-items: center; gap: 14px; margin-top: 8px; }
+.signup-heading { margin: 0; font-size: 1.125rem; line-height: 1.4; font-weight: 600; }
+.signup-button { margin: 0; padding: 10px 18px; min-height: 44px; font-size: 0.9375rem; line-height: 1.4; }
+.review-footer { padding-top: 24px; text-align: center; }
+.review-link { display: inline-flex; align-items: center; min-height: 44px; font-size: 0.875rem; color: var(--light); text-decoration: underline; text-underline-offset: 4px; }
+.review-link:hover { color: var(--brand-1); }
+@media (max-height: 600px) {
+  .landing { padding-top: 16px; }
+  .landing-content { gap: 12px; }
+  .oni-mark { width: 96px; }
+  .wordmark { width: 132px; }
+  .signup-teaser { margin-top: 0; gap: 10px; }
+  .review-footer { padding-top: 12px; }
+}

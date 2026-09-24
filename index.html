@@ -33,6 +33,7 @@
 <link rel="stylesheet" href="assets/typography-cadf9c4d.css" />
 <link rel="stylesheet" href="assets/ui-ac4d8636.css" />
   <script src="assets/staging.js" defer></script>
+<link rel="stylesheet" href="assets/layout.css">
 <style>.modal-dialog { max-height: 90dvh; overflow-y: auto; } body.modal-open { overflow: hidden; }</style>
 </head>
 
@@ -42,20 +43,20 @@
 
     <!-- Main -->
     <main id="user-main" class="flex-1 overflow-x-hidden flex flex-col">
-      <div data-controller="free-pizza-modal"
+      <div class="landing" data-controller="free-pizza-modal"
      data-free-pizza-modal-open-value="false"
      data-action="keydown@window->free-pizza-modal#handleKeydown">
 
-  <section class="container flex-1 flex flex-col gap-md items-center justify-center p-sm">
+  <section class="landing-content">
 
-    <img alt="ONI" class="mt-lg" style="width: 18rem; max-width:50%" src="assets/oni-face-orange-bdc27386.svg" />
-    <img alt="ONI" class="mt-md" style="width: 18rem; max-width:50%" src="assets/onino-stacked-logo-white-7a9f3887.svg" />
-    <p class="text-lg italic text-center mt-md text-light">Coming to Fairfax &amp; Novato Farmer's Markets Summer&nbsp;2026</p>
+    <img alt="ONI" class="oni-mark" src="assets/oni-face-orange-bdc27386.svg" />
+    <img alt="ONINO PIZZA" class="wordmark" src="assets/onino-stacked-logo-white-7a9f3887.svg" />
+    <p class="market-copy">Fairfax &amp; Novato Farmer's Markets Summer&nbsp;2026</p>
 
     <!-- Free pizza signup teaser -->
-    <div class="flex flex-col items-center gap-sm mt-xs text-center">
-      <p class="font-bold text-xl">Want to try a <em>free</em> pizza on us?</p>
-      <a class="ui-button ui-brand-1 my-sm" data-turbo-frame="signup-modal-frame" data-action="free-pizza-modal#open" href="#free-pizza">Oh HECK, yeah!</a>
+    <div class="signup-teaser">
+      <p class="signup-heading">Want to try a <em>free</em> pizza on us?</p>
+      <a class="ui-button ui-brand-1 signup-button" data-turbo-frame="signup-modal-frame" data-action="free-pizza-modal#open" href="#free-pizza">Oh HECK, yeah!</a>
     </div>
 
   </section>
